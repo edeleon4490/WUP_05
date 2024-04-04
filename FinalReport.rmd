@@ -15,11 +15,11 @@ triUmp <-read.csv(file="triUmpsal.csv",header=TRUE)
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
-A new  preventative aides drug (triUmpsal) is under test in clinical trials. Consider only the DrugUsers, does this drug seem effective?  Hint - use dplyr to obtain that subpopulation with the filter command.
+A new preventative aides drug (triUmpsal) is under test in clinical trials. Consider only the DrugUsers, does this drug seem effective?  Hint - use dplyr to obtain that subpopulation with the filter command.
 
-$H_0$: The new preventative aides drug does not seem effective in helping those who have been diagnosed with aides.
+$H_0$: The new preventative aides drug does not seem effective in helping those who have been diagnosed with aids.
 
-$H_A$: The new preventative aides drug weems to be effective in helping those who have contracted aides. 
+$H_A$: The new preventative aides drug weems to be effective in helping those who have contracted aids. 
 
 # Methods
 
@@ -29,7 +29,7 @@ $H_A$: The new preventative aides drug weems to be effective in helping those wh
 Variables we use are:
 
 Treatment - categorical.  
-DrugUser - categorical. 
+DrugUser - categorical.   
 Infected - categorical.
 
 Infected depends on treatment among users.
@@ -56,10 +56,19 @@ barchartGC(~infected + treatment,data=drugUserData)
 barchartGC(~infected + treatment,data=drugUserData,  type="percent")
 ```
 
+The percent bar chart shows that among those that have been given the placebo, that percentage has risen whereas those who have been getting the drug shows a lower percentage showing that the drug is working.
 
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=drugUserData)
+rowPerc(table1)
+colPerc(table1)
+```
+
+In the top graph, if your infected with aids then 24.29% were getting the drug
 
 ## Inferential Results
 
